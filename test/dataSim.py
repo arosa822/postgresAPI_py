@@ -6,21 +6,24 @@ import random
 import time
 
 startTime = time.time()
-device = 'dataSim'
+device_01 = 'device_01'
+device_02 = 'device_02'
 
 def test():
     testConn()
     dt = datetime.utcnow()
-    device = "testing" 
+    device_02 = "testing" 
     state = random.randint(0,11)
-    push(device, dt,state)
+    push(device_02, dt,state)
     return
 
 def main():
     while True:
         try:
             print("sending data to server...")
-            push(device,datetime.utcnow(), random.randint(0,11))
+            push(device_01,datetime.utcnow(), random.randint(0,11))
+            push(device_02,datetime.utcnow(), random.randint(0,11))
+            
         except:
             print('error pushing data')
             break

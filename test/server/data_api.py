@@ -84,9 +84,9 @@ def getData_4(device_filter):
     """ query device data using the fetchmany function"""
     conn = None
     # create empty dictionary where x = timestamp(utc) && y = state 
-    data = {'x':[],'y':[]}
+    data = {'x':[],'y':[],'testpt':[]}
     # SQL query we are going to use to get the data
-    sql = """SELECT datetime, value FROM pythontest WHERE device = '{}' ORDER BY datetime"""
+    sql = """SELECT datetime, value, testpt  FROM pythontest WHERE device = '{}' ORDER BY datetime"""
 
     # perform the SQL query using the fetchmany method since we are pulling in
     # a large dataset
@@ -96,9 +96,12 @@ def getData_4(device_filter):
         cur.execute(sql.format(device_filter))
         
         for row in iter_row(cur,10):
-            #print(row)
+            # store time 
             data['x'].append(row[0])
+            # store state
             data['y'].append(row[1])
+            # get testpt
+            data['testpt'].append(row[2])
 
         print("The number of fields:", cur.rowcount)
         cur.close()

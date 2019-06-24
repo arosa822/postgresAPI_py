@@ -2,13 +2,14 @@
 import dash 
 import dash_core_components as dcc
 import dash_html_components as html
-from getData import getData_4
+from data_api import getData_4
 
 def pullData():
     
     device_1 = getData_4('device_01')
     device_2 = getData_4('device_02')
     return device_1, device_2 
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
